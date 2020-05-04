@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Nueva</title>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	</head>
+	<body>
+		<h1>Pedir quesadillota</h1>
+		<form action="/pedidos/crear" method="post">
+			<div>
+				<input type="text" name="nombre" placeholder="Nombre" class="round-field" th:value="${quesadillota}?*{nombre}:''">
+			</div>
+			<div>
+				<label for="tipoTortilla">Tipo tortilla</label>
+				<select id="tipoTortilla" name="tipoTortilla" th:value="${quesadillota}?*{tipoTortilla}:1">
+					<option value="1">Maiz a mano</option>
+					<option value="2">Maiz</option>
+					<option value="3">Harina</option>
+				</select>
+			</div>
+			<div>
+				<label>Chile</label>
+				<input type="radio" name="tipoChile" value="1">No
+				<input type="radio" name="tipoChile" value="2">Pica
+				<input type="radio" name="tipoChile" value="3">Pica Pica
+			</div>
+			<div>
+				<label>Queso</label>
+				<input type="radio" name="tipoQueso" value="Normal">Normal
+				<input type="radio" name="tipoQueso" value="Doble">Doble
+			</div>
+			<div>
+				<label for="comentario">Comentarios</label>
+				<textarea id="comentario" name="comentario" rows="5" th:value="${quesadillota}?*{comentario}:''"></textarea>
+			</div>
+			<input type="submit" value="Pedir">
+		</form>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Quesadillotas</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1>Quesadillotas</h1>
+				<a class="btn btn-primary" th:href="@{/pedidos/nuevo}">Nueva</a>
+				<div id="alert" class="alert alert-success" role="alert" th:if="${mensaje}" th:text="${mensaje}"></div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Tortilla</th>
+							<th>Chile</th>
+							<th>Queso</th>
+							<th>Comentario</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="quesadillota: ${quesadillotas}">
+							<td th:text="${quesadillota.id}"></td>
+							<td th:text="${quesadillota.nombre}"></td>
+							<td th:text="${quesadillota.tipoTortilla}"></td>
+							<td th:text="${quesadillota.tipoChile}"></td>
+							<td th:text="${quesadillota.queso}"></td>
+							<td th:text="${quesadillota.comentario}"></td>
+							<td>
+								<div class="btn-group" role="group">
+									<a th:href="@{/pedidos/editar(qid=${quesadillota.id})}" class="btn">Editar</a>
+									<form action="/pedidos/eliminar" method="post">
+										<input type="hidden" name="qid" th:value="${quesadillota.id}">
+										<input class="btn btn-primary" type="submit" value="Eliminar">
+									</form>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+		</div>
+		<script th:if="${mensaje}">
+			setTimeout(function() {
+				document.getElementById("alert").remove();
+			}, 2000);
+		</script>
+	</body>
+</html>

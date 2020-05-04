@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Quesadillotas</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}">
+	</head>
+	<body>
+		<div th:each="quesadillota: ${quesadillotas}" class="card">
+			<div class="card-body">
+				<h3 th:text="${quesadillota.nombre}" class="card-title"></h3>
+				<a th:href="@{/pedidos/editar(qid=${quesadillota.id})}" class="card-link">Editar</a>
+				<form action="/pedidos/eliminar" method="post">
+					<input type="hidden" name="qid" th:value="${quesadillota.id}">
+					<input class="btn btn-outline-primary" type="submit" value="Eliminar">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

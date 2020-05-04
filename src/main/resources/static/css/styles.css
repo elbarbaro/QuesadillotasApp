@@ -1,0 +1,42 @@
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+form {
+	width: 50%;
+	margin: 0 auto;
+	padding: 16px;
+	text-align: center;
+}
+
+label {
+	display: block;
+}
+
+input[type="text"] {
+	width: 100%;
+	height: 40px;
+	padding: 8px;
+	font-size: 3em;
+	outline: none;
+}
+
+select {
+	width: 100%;
+	height: 40px;
+	margin: 0 16px;
+	font-size: 1.5em;
+}
+
+div > label {
+	margin: 8px;
+	font-size: 2em;
+}
+
+.round-field {
+	border-radius: 30px;
+}
